@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Web App</title>
+</head>
+<body>
+  <h1>Demo Web App</h1>
+  <p id="status">Loading...</p>
+
+  <script>
+    fetch("/api/health")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("status").innerText =
+          "Backend status: " + data.status;
+      })
+      .catch(err => {
+        document.getElementById("status").innerText =
+          "Backend not reachable";
+      });
+  </script>
+</body>
+</html>
+
